@@ -1,4 +1,5 @@
 from django.urls import path
+from rest_framework import routers
 from . import views
 
 urlpatterns = [
@@ -14,5 +15,9 @@ urlpatterns = [
     path('comment/<int:pk>/approve/',
          views.comment_approve, name='comment_approve'),
     path('comment/<int:pk>/remove/', views.comment_remove,
-         name='comment_remove'),
+         name='comment_remove')
 ]
+
+router = routers.DefaultRouter()
+router.register(r'posts', views.PostViewSet)
+router.register(r'comments', views.CommentViewSet)
