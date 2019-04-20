@@ -16,7 +16,10 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth import views
+from rest_framework_swagger.views import get_swagger_view
 from blog.urls import router as blog_router
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +27,9 @@ urlpatterns = [
     path('accounts/logout/', views.LogoutView.as_view(next_page='/'),
          name='logout'),
     path('', include('blog.urls')),
-    path('api/', include(blog_router.urls))
+    path('api/', include(blog_router.urls)),
+    path('swagger/', schema_view)
+
+
 
 ]

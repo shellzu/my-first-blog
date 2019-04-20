@@ -18,6 +18,8 @@ urlpatterns = [
          name='comment_remove')
 ]
 
-router = routers.DefaultRouter()
+#
+# router = routers.DefaultRouter()
+router = routers.SimpleRouter()
 router.register(r'posts', views.PostViewSet)
 router.register(r'comments', views.CommentViewSet)
